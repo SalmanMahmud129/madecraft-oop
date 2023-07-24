@@ -5,48 +5,35 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+// objects are like a capsule, holds data associated and functionality --> encapsulation, dont want data or functionality accessible outside the object so we use private for the variables and methods
 public class Duck {
 
-	/* Member Variables: data (encapsulated / private) */
-	
+	// member variables: data
 	private String name;
 	private int lifeExpectancy;
 	private String favoriteFood;
 
-	/* The Constructor: for creating instances */
-	
-	public Duck(String name, int lifeExpectancy, String favoriteFood) {
+	// constructor
+	public Duck(String name, int lifeExpectancy, String favoriteFood){
 		super();
 		this.name = name;
 		this.lifeExpectancy = lifeExpectancy;
 		this.favoriteFood = favoriteFood;
 	}
 
-	/* Methods: functionality */
-	
-	void waddle() {
+	// methods: functionality
+	void waddle(){
 		lifeExpectancy++;
 		System.out.println(this.name + " is waddling");
 	}
 
-	void quack() {
-		System.out.println("quack quack");
-		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(
-					"sounds/quack.wav").toURI().toURL());
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			clip.start();
-			Thread.sleep(3400);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+	void quack(){
+		System.out.println("Quack Quack");
 	}
 
 	@Override
-	public String toString() {
-		return "My name is " + name + " I like to eat " + favoriteFood +
-				" lifeExpectancy: " + lifeExpectancy;
+	public String toString(){
+		return "My name is " + name + " and I like to eat " + favoriteFood + " , life expectancy: " + lifeExpectancy;
 	}
 
 }
